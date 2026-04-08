@@ -1,0 +1,5 @@
+feature/$(whoami)
+feature/`id`
+feature/foo;echo-test
+feature/foo&&echo-test
+feature/${IFS}echo${IFS}test
