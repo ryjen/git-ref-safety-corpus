@@ -9,6 +9,8 @@ It uses four simple layers:
 3. STRIDE threat categories
 4. security requirements
 
+The underlying issue is multilayered: Git-valid metadata is harmless at the repository layer, but can become dangerous after crossing into prompt construction, planning, parsing, and execution layers. The failure is boundary collapse across layers, not a defect in Git ref syntax alone.
+
 ## System scope
 
 The system in scope is any AI-agent or automation workflow that:

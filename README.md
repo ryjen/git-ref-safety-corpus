@@ -48,6 +48,8 @@ Git metadata increasingly flows into:
 
 The core issue is not only whether metadata is authorized, but whether it remains safe when interpreted outside Git.
 
+This class of issue is multilayered. The problem is not that Git refs are executable on their own, but that Git-valid metadata can cross from the repository data plane into the automation control plane through prompts, templates, parser boundaries, and execution sinks.
+
 ## Non-Codex workflow examples
 
 The public Barrack writeup on the Codex issue includes several concrete branch-name examples that are also useful for reasoning about non-Codex automation systems such as [Anthesis](https://anthesis.micrantha.com/) ([community repo](https://github.com/hackelia-micrantha/anthesis-community)), internal CI/CD wrappers, self-hosted agents, or orchestration pipelines:
@@ -81,6 +83,8 @@ For Anthesis-style or other non-Codex workflows, the general path is:
 
 That is the boundary where a valid ref becomes a vulnerability.
 
+In that sense, the attack is not a single shell bug or a single agent bug. It is a boundary-collapse problem across multiple layers.
+
 ## Additional discussion aids
 
 - [`docs/boundary-matrix.md`](docs/boundary-matrix.md)
@@ -91,6 +95,12 @@ That is the boundary where a valid ref becomes a vulnerability.
 
 - [`docs/agent-threat-model.md`](docs/agent-threat-model.md)
   A lightweight trust-boundary and STRIDE-based threat model for AI-agent and CI/CD workflows that consume repository metadata.
+
+- [`docs/csslp-analysis.md`](docs/csslp-analysis.md)
+  A CSSLP-oriented lifecycle analysis showing how the issue spans requirements, architecture, implementation, testing, and operational controls rather than only input sanitization.
+
+- [`docs/secure-design-principles.md`](docs/secure-design-principles.md)
+  A mapping of the corpus to classic secure design principles such as economy of mechanism, fail-safe defaults, complete mediation, least privilege, and psychological acceptability.
 
 - [`docs/security-review-checklist.md`](docs/security-review-checklist.md)
   A concrete review checklist for agent builders and CI/CD owners covering trust boundaries, prompt safety, execution sinks, display handling, auditability, and STRIDE-oriented checks.
