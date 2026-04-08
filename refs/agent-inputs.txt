@@ -1,0 +1,27 @@
+# Representative Git- or repo-adjacent inputs that become risky in agent workflows
+# when copied into prompts, plans, templates, or command strings.
+
+PR title: release prep $(echo-test)
+PR title: release prep ${IFS}echo${IFS}test
+PR title: --help
+PR title: main\u3000approval
+
+Commit message: hotfix: retry with `echo-test`
+Commit message: docs: use ${IFS} for spacing demo
+Commit message: chore: --help
+Commit message: release: main\u3000candidate
+
+Issue comment: please review branch $(echo-test)
+Issue comment: please retry with ${IFS}echo${IFS}test
+Issue comment: use --help if checkout fails
+Issue comment: approve main\u3000candidate
+
+Filename: deploy-$(echo-test).sh
+Filename: deploy-${IFS}echo-test.sh
+Filename: --help.txt
+Filename: main\u3000notes.md
+
+workflow_dispatch input: branch=$(echo-test)
+workflow_dispatch input: branch=${IFS}echo-test
+workflow_dispatch input: branch=--help
+workflow_dispatch input: branch=main\u3000candidate
